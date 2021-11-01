@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -32,17 +33,18 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         buttonTimePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                buttonTimePicker.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_in));
                 DialogFragment timePicker = new TimePickerFragment();
                 timePicker.show(getSupportFragmentManager(),"Time Picker");
             }
         });
 
         //untuk menggagalkan alarm yang sudah disetel
-        Button buttonCancelAlarm =
-                findViewById(R.id.button_cancel);
+        Button buttonCancelAlarm = findViewById(R.id.button_cancel);
         buttonCancelAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                buttonCancelAlarm.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_in));
                 cancelAlarm();
             }
         });
